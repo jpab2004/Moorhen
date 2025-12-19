@@ -37,7 +37,8 @@
     "build-release-dev": "npm run prebuild && webpack --mode development --devtool inline-source-map",
     "create-docs": "npm run create-version && npx jsdoc -c jsdoc.json ../README.md && mkdir -p docs/wasm_src_frontend && cp -a ../wasm_src_frontend/baby_gru.png docs/wasm_src_frontend",
     "test": "npm run create-version && npm run transpile-protobuf && npm run transpile-graphql-codegen && npx tsc && npm run transpile-ts-worker-jest && ln -sf ./public/ ./baby-gru && node --trace-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles --forceExit",
-    "test-react": "npm run create-version && npm run transpile-protobuf && npm run transpile-graphql-codegen && npx tsc && node --trace-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.config.js --detectOpenHandles --forceExit --testPathIgnorePatterns=MoorhenContainer.test.jsx --testPathIgnorePatterns=MoorhenLigandMenu.test.jsx --testPathIgnorePatterns=MoorhenEditMenu.test.jsx --selectProjects react-components"
+    "test-react": "npm run create-version && npm run transpile-protobuf && npm run transpile-graphql-codegen && npx tsc && node --trace-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.config.js --detectOpenHandles --forceExit --testPathIgnorePatterns=MoorhenContainer.test.jsx --testPathIgnorePatterns=MoorhenLigandMenu.test.jsx --testPathIgnorePatterns=MoorhenEditMenu.test.jsx --selectProjects react-components",
+    "build-lib": "webpack --config webpack.config.library.js"
   },
   "eslintConfig": {
     "extends": [
@@ -126,8 +127,6 @@
     "react-resizable": "^3.0.5",
     "react-scan": "^0.4.3",
     "react-simple-code-editor": "^0.14.1",
-    "sass": "^1.89.2",
-    "sass-loader": "^16.0.5",
     "style-loader": "^4.0.0",
     "styled-components": "^6.1.19",
     "ts-jest": "^29.4.0",
@@ -144,7 +143,6 @@
     "wait-on": "^8.0.3",
     "web-vitals": "^5.0.3",
     "webpack": "^5.99.9",
-    "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2",
     "webpack-node-externals": "^3.0.0",
     "worker-loader": "^3.0.8",
@@ -154,6 +152,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
     "@babel/plugin-transform-object-rest-spread": "^7.20.7",
+    "@babel/preset-typescript": "^7.28.5",
     "@eslint/css": "^0.9.0",
     "@eslint/js": "^9.30.1",
     "@typescript-eslint/eslint-plugin": "^8.35.1",
@@ -162,6 +161,9 @@
     "eslint": "^9.30.1",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.3.0",
-    "jsdoc-babel": "^0.5.0"
+    "jsdoc-babel": "^0.5.0",
+    "sass": "^1.97.0",
+    "sass-loader": "^16.0.6",
+    "webpack-cli": "^6.0.1"
   }
 }
